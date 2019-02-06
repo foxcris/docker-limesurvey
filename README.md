@@ -13,8 +13,8 @@ The following directories can be loaded from the host to keep the data and confi
  | /var/log/apache2 | Logging directory |
  | /etc/letsencrypt | Storage of the created let's encrypt certificates. If this directory is empty on start a default configuration is provided.|
  | /var/www/html/appplication/config | Configuration directroy for limesurvey |
- | /var/www/html/tmp | Temporary directory. write permissione required. |
- | /var/www/html/upload | Upload directroy. Wirte permission required. |
+ | /var/www/html/tmp | Temporary directory. |
+ | /var/www/html/upload | Upload directroy. |
  
 ### Environment variables
 The following environment variables are available to configure the container on startup.
