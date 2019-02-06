@@ -31,7 +31,11 @@ ls /etc/apache2/sites-available/ -1A | a2ensite *.conf
 if [ "$LETSENCRYPTDOMAINS" != "" ]
 then
   /usr/sbin/apache2ctl start
-  certbot --apache -n -d $LETSENCRYPTDOMAINS --agree-tos --email $LETSENCRYPTEMAIL
+  domains=$(echo $LETSENCRYPTDOMAINS | tr "," "\n")
+  for domain in $domains
+  do
+    certbot --apache -n -d $domain --agree-tos --email $LETSENCRYPTEMAIL
+  done
   /usr/sbin/apache2ctl stop
 fi
 
