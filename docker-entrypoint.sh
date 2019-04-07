@@ -24,6 +24,9 @@ chmod -R 770 /var/www/html/appliction/config
 chmod -R 770 /var/www/html/tmp
 chmod -R 770 /var/www/html/upload
 
+#Perform Databaseupdate
+php /var/www/html/application/commands/console.php updatedb
+
 #List site and enable
 ls /etc/apache2/sites-available/ -1A | a2ensite *.conf
 
