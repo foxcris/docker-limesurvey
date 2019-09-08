@@ -25,9 +25,9 @@ RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-g
 #certbot
 RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get install -y python-certbot-apache -t stretch-backports && apt-get clean
 
-ARG LIMESURVEY_VERSION=3.15.8
-ARG LIMESURVEY_URL=https://www.limesurvey.org/stable-release?download=2546:limesurvey3171%20190408zip
-ARG LIMESURVEY_SHA256=69bce8bf7dd4dcff45b049570c37ae9e7a903f54661eb321ffe2d76b7e8cd0e3
+ARG LIMESURVEY_VERSION=3.17.16
+ARG LIMESURVEY_URL=https://www.limesurvey.org/stable-release?download=2649:limesurvey31716%20190906zip
+ARG LIMESURVEY_SHA256=27b808ad8fc255db88037ae0e414e3f97e4ab64dbc6488afe453329109adbd21
 
 RUN curl -L -o limesurvey.zip ${LIMESURVEY_URL}\
   && echo "${LIMESURVEY_SHA256} limesurvey.zip" | sha256sum -c \
