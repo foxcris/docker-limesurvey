@@ -1,13 +1,13 @@
-FROM debian:stretch
+FROM debian:buster
 
 MAINTAINER foxcris
 
 #repositories richtig einrichten
-RUN echo 'deb http://deb.debian.org/debian stretch main' > /etc/apt/sources.list
-RUN echo 'deb http://deb.debian.org/debian stretch-updates main' >> /etc/apt/sources.list
-RUN echo 'deb http://security.debian.org stretch/updates main' >> /etc/apt/sources.list
+RUN echo 'deb http://deb.debian.org/debian buster main' > /etc/apt/sources.list
+RUN echo 'deb http://deb.debian.org/debian buster-updates main' >> /etc/apt/sources.list
+RUN echo 'deb http://security.debian.org buster/updates main' >> /etc/apt/sources.list
 #backports fuer certbot
-RUN echo 'deb http://ftp.debian.org/debian stretch-backports main' >> /etc/apt/sources.list
+RUN echo 'deb http://ftp.debian.org/debian buster-backports main' >> /etc/apt/sources.list
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y locales && apt-get clean
 RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
@@ -23,7 +23,7 @@ RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-g
 RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get install -y apache2 libapache2-mod-php7.0 php-mysql php-xml php-mbstring php-gd php-ldap php-zip php-imap php-curl && apt-get clean
 
 #certbot
-RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get install -y python-certbot-apache -t stretch-backports && apt-get clean
+RUN apt-get update && apt-get -y upgrade && DEBIAN_FRONTEND=noninteractive apt-get install -y python-certbot-apache -t buster-backports && apt-get clean
 
 ARG LIMESURVEY_VERSION=3.21.0
 ARG LIMESURVEY_URL=https://www.limesurvey.org/stable-release?download=2728:limesurvey3210%20191203zip
